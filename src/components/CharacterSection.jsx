@@ -72,11 +72,12 @@ export const CharacterSection = () => {
               {/* FOOTER ACTIONS */}
               <div className="d-flex justify-content-between">
 
-                <Link to={`/single/${char.id}`}>
-                  <button className="btn btn-outline-primary">
-                    Learn more!
-                  </button>
-                </Link>
+                <Link to={`/character/${char.id}`}>
+  <button className="btn btn-outline-primary">
+    Learn more!
+  </button>
+</Link>
+
 
                 <button className="btn btn-outline-warning">
                   ♡
@@ -121,9 +122,12 @@ export const CharacterSection = () => {
               <div className="d-flex justify-content-between">
 
                 <Link to={`/single/${char.id}`}>
-                  <button className="btn btn-outline-primary">
-                    Learn more!
-                  </button>
+                  <Link to={`/character/${char.id}`}>
+  <button className="btn btn-outline-primary">
+    Learn more!
+  </button>
+</Link>
+
                 </Link>
 
                 <button className="btn btn-outline-warning">
