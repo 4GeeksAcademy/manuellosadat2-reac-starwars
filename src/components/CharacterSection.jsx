@@ -73,12 +73,10 @@ export const CharacterSection = () => {
               <div className="d-flex justify-content-between">
 
                 <Link to={`/character/${char.id}`}>
-  <button className="btn btn-outline-primary">
-    Learn more!
-  </button>
-</Link>
-
-
+                    <button className="btn btn-outline-primary">
+                        Learn more!
+                    </button>
+                </Link>
                 <button className="btn btn-outline-warning">
                   ♡
                 </button>
@@ -122,14 +120,12 @@ export const CharacterSection = () => {
               <div className="d-flex justify-content-between">
 
                 <Link to={`/single/${char.id}`}>
-                  <Link to={`/character/${char.id}`}>
-  <button className="btn btn-outline-primary">
-    Learn more!
-  </button>
-</Link>
-
+                    <Link to={`/character/${char.id}`}>
+                        <button className="btn btn-outline-primary">
+                        Learn more!
+                        </button>
+                    </Link>
                 </Link>
-
                 <button className="btn btn-outline-warning">
                   ♡
                 </button>
