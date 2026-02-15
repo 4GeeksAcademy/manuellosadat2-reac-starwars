@@ -1,83 +1,57 @@
 import { Link } from "react-router-dom";
-
-const characters = [
-  {
-    id: 1,
-    name: "Luke Skywalker",
-    gender: "male",
-    hair: "blond",
-    eyes: "blue"
-  },
-  {
-    id: 2,
-    name: "C-3PO",
-    gender: "n/a",
-    hair: "n/a",
-    eyes: "yellow"
-  },
-  {
-    id: 3,
-    name: "R2-D2",
-    gender: "n/a",
-    hair: "n/a",
-    eyes: "red"
-  },
-  {
-    id: 4,
-    name: "Darth Vader",
-    gender: "male",
-    hair: "none",
-    eyes: "yellow"
-  },
-  {
-    id: 5,
-    name: "Leia",
-    gender: "female",
-    hair: "brown",
-    eyes: "brown"
-  }
-];
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const CharacterSection = () => {
+
+  const { dispatch } = useGlobalReducer();
+
+  const characters = [
+    { id:1,name:"Luke Skywalker",gender:"male",hair:"blond",eyes:"blue"},
+    { id:2,name:"C-3PO",gender:"n/a",hair:"n/a",eyes:"yellow"},
+    { id:3,name:"R2-D2",gender:"n/a",hair:"n/a",eyes:"red"},
+    { id:4,name:"Darth Vader",gender:"male",hair:"none",eyes:"yellow"},
+    { id:5,name:"Leia",gender:"female",hair:"brown",eyes:"brown"}
+  ];
+
   return (
     <div className="container mt-5">
 
-      {/* TITLE */}
       <h1 className="text-danger mb-4">Characters</h1>
 
-      {/* SCROLL CONTAINER */}
       <div className="d-flex overflow-auto pb-3">
 
         {characters.map(char => (
           <div key={char.id} className="card me-4" style={{ minWidth: "18rem" }}>
-            
-            {/* IMAGE */}
-            <img
-              src="https://via.placeholder.com/400x200"
-              className="card-img-top"
-              alt="character"
-            />
 
-            {/* BODY */}
+            <img src="https://via.placeholder.com/400x200" className="card-img-top"/>
+
             <div className="card-body">
 
-              <h5 className="card-title">{char.name}</h5>
+              <h5>{char.name}</h5>
 
-              <p className="card-text mb-4">
-                Gender: {char.gender} <br />
-                Hair Color: {char.hair} <br />
-                Eye-Color: {char.eyes}
+              <p>
+                Gender: {char.gender}<br/>
+                Hair: {char.hair}<br/>
+                Eyes: {char.eyes}
               </p>
 
-              {/* FOOTER ACTIONS */}
               <div className="d-flex justify-content-between">
 
                 <Link to={`/character/${char.id}`}>
-                    <button className="btn btn-outline-primary">
-                        Learn more!
-                    </button>
+                  <button className="btn btn-outline-primary">
+                    Learn more
+                  </button>
                 </Link>
-                <button className="btn btn-outline-warning">
+
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_FAVORITE",
+                      payload: char.name
+                    })
+                  }
+                >
                   ♡
                 </button>
 
@@ -88,45 +62,43 @@ export const CharacterSection = () => {
 
       </div>
 
-
-      {/* TITLE */}
+      
       <h1 className="text-danger mb-4 mt-5">Planets</h1>
 
-      {/* SCROLL CONTAINER */}
       <div className="d-flex overflow-auto pb-3">
 
         {characters.map(char => (
           <div key={char.id} className="card me-4" style={{ minWidth: "18rem" }}>
-            
-            {/* IMAGE */}
-            <img
-              src="https://via.placeholder.com/400x200"
-              className="card-img-top"
-              alt="character"
-            />
 
-            {/* BODY */}
+            <img src="https://via.placeholder.com/400x200" className="card-img-top"/>
+
             <div className="card-body">
 
-              <h5 className="card-title">{char.name}</h5>
+              <h5>{char.name}</h5>
 
-              <p className="card-text mb-4">
-                Gender: {char.gender} <br />
-                Hair Color: {char.hair} <br />
-                Eye-Color: {char.eyes}
+              <p>
+                Gender: {char.gender}<br/>
+                Hair: {char.hair}<br/>
+                Eyes: {char.eyes}
               </p>
 
-              {/* FOOTER ACTIONS */}
               <div className="d-flex justify-content-between">
 
-                <Link to={`/single/${char.id}`}>
-                    <Link to={`/character/${char.id}`}>
-                        <button className="btn btn-outline-primary">
-                        Learn more!
-                        </button>
-                    </Link>
+                <Link to={`/character/${char.id}`}>
+                  <button className="btn btn-outline-primary">
+                    Learn more
+                  </button>
                 </Link>
-                <button className="btn btn-outline-warning">
+
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_FAVORITE",
+                      payload: char.name
+                    })
+                  }
+                >
                   ♡
                 </button>
 
