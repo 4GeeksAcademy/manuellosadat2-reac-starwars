@@ -23,7 +23,7 @@ export const CharacterSection = () => {
         {characters.map(char => (
           <div key={char.id} className="card me-4" style={{ minWidth: "18rem" }}>
 
-            <img src="https://via.placeholder.com/400x200" className="card-img-top"/>
+            <img src="https://placehold.co/500x300?text=500+x+300" className="card-img-top"/>
 
             <div className="card-body">
 
@@ -70,7 +70,7 @@ export const CharacterSection = () => {
         {characters.map(char => (
           <div key={char.id} className="card me-4" style={{ minWidth: "18rem" }}>
 
-            <img src="https://via.placeholder.com/400x200" className="card-img-top"/>
+            <img src="https://placehold.co/500x300?text=500+x+300" className="card-img-top"/>
 
             <div className="card-body">
 

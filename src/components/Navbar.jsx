@@ -3,7 +3,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const Navbar = () => {
 
-  const { store } = useGlobalReducer(); // ✔ aquí dentro
+  const { store, dispatch } = useGlobalReducer();
 
   return (
     <nav className="navbar navbar-light bg-light">
@@ -35,7 +35,6 @@ export const Navbar = () => {
               <li key={i} className="dropdown-item d-flex justify-content-between">
 
                 {fav}
-
                 <span
                   style={{ cursor: "pointer" }}
                   onClick={() =>
@@ -47,7 +46,6 @@ export const Navbar = () => {
                 >
                   🗑
                 </span>
-
               </li>
             ))}
 

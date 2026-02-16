@@ -3,9 +3,6 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { CharacterSection } from "../components/CharacterSection.jsx";
 
 export const Home = () => {
-
-  const {store, dispatch} =useGlobalReducer()
-
 	return (
 		<CharacterSection />
 	);
