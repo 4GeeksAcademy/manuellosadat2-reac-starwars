@@ -22,7 +22,7 @@ export const CharacterDetails = () => {
 
         <div className="col-md-6">
           <img
-            src="https://via.placeholder.com/600x400"
+            src="https://placehold.co/500x300?text=500+x+300"
             className="img-fluid rounded"
           />
         </div>

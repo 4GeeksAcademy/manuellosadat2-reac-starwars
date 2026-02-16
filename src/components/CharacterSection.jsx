@@ -13,6 +13,13 @@ export const CharacterSection = () => {
     { id:5,name:"Leia",gender:"female",hair:"brown",eyes:"brown"}
   ];
 
+  const planets = [
+  { id:1, name:"Tatooine", population:"200000", terrain:"desert", climate:"arid" },
+  { id:2, name:"Alderaan", population:"2000000000", terrain:"grasslands", climate:"temperate" },
+  { id:3, name:"Hoth", population:"unknown", terrain:"tundra", climate:"frozen" }
+];
+
+
   return (
     <div className="container mt-5">
 
@@ -67,7 +74,7 @@ export const CharacterSection = () => {
 
       <div className="d-flex overflow-auto pb-3">
 
-        {characters.map(char => (
+        {planets.map(char => (
           <div key={char.id} className="card me-4" style={{ minWidth: "18rem" }}>
 
             <img src="https://placehold.co/500x300?text=500+x+300" className="card-img-top"/>
@@ -77,14 +84,14 @@ export const CharacterSection = () => {
               <h5>{char.name}</h5>
 
               <p>
-                Gender: {char.gender}<br/>
-                Hair: {char.hair}<br/>
-                Eyes: {char.eyes}
+                population: {char.population}<br/>
+                terrain: {char.terrain}
+                
               </p>
 
               <div className="d-flex justify-content-between">
 
-                <Link to={`/character/${char.id}`}>
+                <Link to={`/planet/${char.id}`}>
                   <button className="btn btn-outline-primary">
                     Learn more
                   </button>
