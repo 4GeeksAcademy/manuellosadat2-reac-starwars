@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
-
-const characters = [
-  { id:1, name:"Luke Skywalker", gender:"male", hair:"blond", eyes:"blue", population:"unknown", climate:"temperate", diameter:"17200" },
-  { id:2, name:"C-3PO", gender:"n/a", hair:"n/a", eyes:"yellow", population:"n/a", climate:"n/a", diameter:"n/a" },
-  { id:3, name:"R2-D2", gender:"n/a", hair:"n/a", eyes:"red", population:"n/a", climate:"n/a", diameter:"n/a" }
-];
+import { useEffect, useState } from "react";
 
 export const CharacterDetails = () => {
 
   const { id } = useParams();
+  const [character, setCharacter] = useState(null);
 
-  const character = characters.find(c => c.id === parseInt(id));
+  useEffect(() => {
+    fetch(`https://www.swapi.tech/api/people/${id}`)
+      .then(res => res.json())
+      .then(data => setCharacter(data.result.properties));
+  }, [id]);
 
-  if (!character) return <h1 className="text-center mt-5">Character not found</h1>;
+  if (!character) return <h1 className="text-center mt-5">Loading...</h1>;
 
   return (
     <div className="container mt-5">
@@ -22,7 +22,8 @@ export const CharacterDetails = () => {
 
         <div className="col-md-6">
           <img
-            src="https://placehold.co/500x300?text=500+x+300"
+            src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+            onError={(e)=> e.target.src="https://placehold.co/600x400?text=No+Image"}
             className="img-fluid rounded"
           />
         </div>
@@ -30,8 +31,7 @@ export const CharacterDetails = () => {
         <div className="col-md-6 text-center">
           <h1>{character.name}</h1>
           <p className="text-muted">
-            This is a detailed description of {character.name}.
-            Here you can put lore, history, or API info.
+            {character.name} is a character from Star Wars universe.
           </p>
         </div>
 
@@ -44,13 +44,12 @@ export const CharacterDetails = () => {
 
         <div className="col">Name<br/><span className="text-dark">{character.name}</span></div>
         <div className="col">Gender<br/><span className="text-dark">{character.gender}</span></div>
-        <div className="col">Hair<br/><span className="text-dark">{character.hair}</span></div>
-        <div className="col">Eyes<br/><span className="text-dark">{character.eyes}</span></div>
-        <div className="col">Climate<br/><span className="text-dark">{character.climate}</span></div>
-        <div className="col">Diameter<br/><span className="text-dark">{character.diameter}</span></div>
+        <div className="col">Height<br/><span className="text-dark">{character.height}</span></div>
+        <div className="col">Mass<br/><span className="text-dark">{character.mass}</span></div>
+        <div className="col">Hair<br/><span className="text-dark">{character.hair_color}</span></div>
+        <div className="col">Eyes<br/><span className="text-dark">{character.eye_color}</span></div>
 
       </div>
-
     </div>
   );
 };
