@@ -1,9 +1,16 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
+import { useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { CharacterSection } from "../components/CharacterSection.jsx";
+import { getCharacters, getPlanets } from "../store";
 
 export const Home = () => {
-	return (
-		<CharacterSection />
-	);
-}; 
+
+  const { dispatch } = useGlobalReducer();
+
+  useEffect(() => {
+    getCharacters(dispatch);
+    getPlanets(dispatch);
+  }, [dispatch]);
+
+  return <CharacterSection />;
+};

@@ -7,7 +7,10 @@ export const initialStore = () => {
       { id: 2, title: "Do my homework", background: null }
     ],
 
-    favorites: []  
+    favorites: [],
+
+    characters: [],
+    planets: []
   }
 }
 
@@ -36,7 +39,40 @@ export default function storeReducer(store, action = {}) {
         favorites: store.favorites.filter(f => f !== action.payload)
       }
 
+    case "SET_CHARACTERS":
+      return {
+        ...store,
+        characters: action.payload
+      }
+
+    case "SET_PLANETS":
+      return {
+        ...store,
+        planets: action.payload
+      }
+
     default:
       return store;
   }
 }
+ 
+
+export const getCharacters = async (dispatch) => {
+  const res = await fetch("https://www.swapi.tech/api/people");
+  const data = await res.json();
+
+  dispatch({
+    type: "SET_CHARACTERS",
+    payload: data.results
+  });
+};
+
+export const getPlanets = async (dispatch) => {
+  const res = await fetch("https://www.swapi.tech/api/planets");
+  const data = await res.json();
+
+  dispatch({
+    type: "SET_PLANETS",
+    payload: data.results
+  });
+};
